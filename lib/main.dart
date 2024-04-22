@@ -1,5 +1,6 @@
 library flutter_utils;
 
+export 'constants.dart';
 export 'utils/data_utils.dart';
 export 'utils/file_utils.dart';
 export 'utils/http_utils.dart';
