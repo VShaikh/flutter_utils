@@ -7,3 +7,4 @@ export 'utils/image_utils.dart';
 export 'utils/json_utils.dart';
 export 'utils/log_utils.dart';
 export 'utils/video_utils.dart';
+export 'utils/widget_utils.dart';
