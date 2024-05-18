@@ -6,6 +6,7 @@ export 'utils/file_utils.dart';
 export 'utils/http_utils.dart';
 export 'utils/image_utils.dart';
 export 'utils/json_utils.dart';
+export 'utils/config_utils.dart';
 export 'utils/log_utils.dart';
 export 'utils/permission_utils.dart';
 export 'utils/time_utils.dart';
