@@ -13,18 +13,29 @@ bool existsFolder(folderPath) {
 
 List<String> files(String folderPath) {
 // var l = Directory.fromUri(Uri.file(folderPath)).listSync(recursive: true, followLinks: true);
-  var l = Directory.fromUri(Uri.file(folderPath)).listSync(recursive: false, followLinks: false);
-  return l.map((e) => e.path).where((f) => existsFile(f)).toList(growable: false);
+  var l = Directory.fromUri(Uri.file(folderPath))
+      .listSync(recursive: false, followLinks: false);
+  return l
+      .map((e) => e.path)
+      .where((f) => existsFile(f))
+      .toList(growable: false);
 }
 
 List<String> folders(String folderPath) {
-  var l = Directory.fromUri(Uri.file(folderPath)).listSync(recursive: false, followLinks: false);
-  return l.map((e) => e.path).where((f) => !existsFile(f)).toList(growable: false);
+  var l = Directory.fromUri(Uri.file(folderPath))
+      .listSync(recursive: false, followLinks: false);
+  return l
+      .map((e) => e.path)
+      .where((f) => !existsFile(f))
+      .toList(growable: false);
 }
 
-String fileContent(String filePath) => existsFile(filePath) ? File.fromUri(Uri.parse(filePath)).readAsStringSync() : "";
+String fileContent(String filePath) => existsFile(filePath)
+    ? File.fromUri(Uri.parse(filePath)).readAsStringSync()
+    : "";
 
-void saveContent(String filePath, String contents) => File.fromUri(Uri.parse(filePath)).writeAsStringSync(contents, flush: true);
+void saveContent(String filePath, String contents) =>
+    File.fromUri(Uri.parse(filePath)).writeAsStringSync(contents, flush: true);
 
 String encodeItem(String item) {
   return item.replaceAll("/", "~");
@@ -52,11 +63,17 @@ Future<List<String>> getAllAndroidRootFolders() async {
 }
 
 int getLastModifiedFile(String absPath) {
-  return File.fromUri(Uri.file(absPath)).statSync().changed.millisecondsSinceEpoch;
+  return File.fromUri(Uri.file(absPath))
+      .statSync()
+      .changed
+      .millisecondsSinceEpoch;
 }
 
 int getLastModifiedFolder(String absPath) {
-  return Directory.fromUri(Uri.file(absPath)).statSync().modified.millisecondsSinceEpoch;
+  return Directory.fromUri(Uri.file(absPath))
+      .statSync()
+      .modified
+      .millisecondsSinceEpoch;
 }
 
 String formatBytes(int bytes) {
@@ -73,8 +90,21 @@ String formatBytes(int bytes) {
   return result;
 }
 
-Future<void> initStoragePath() async {
+Future<void> initGLocalFolder() async {
   var ext = await getExternalStorageDirectory();
-  uStoragePath = ext!.path;
-  addDebug("Initialized variable for Storage Path: $uStoragePath");
+  uLocalFolder = ext!.path;
+  addDebug("Initialized variable for Local Folder Path: $uLocalFolder");
+}
+
+Future<void> moveFile(String sourcePath, String newPath) async {
+  File sourceFile = File(sourcePath);
+  File destinationFile = File(newPath);
+
+  try {
+    // Rename or move the file
+    await sourceFile.rename(destinationFile.path);
+    addDebug('File moved successfully.');
+  } catch (e) {
+    addDebug('Error moving file: $e');
+  }
 }

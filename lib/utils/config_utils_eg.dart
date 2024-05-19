@@ -1,11 +1,9 @@
 import 'package:flutter_utils/main.dart';
 
 class AppConfigs {
-  init() {
-    LocalConfigStorage.getInstance().init(
-        "<file.json>",
-        Map.fromIterable(
-            AppConfig.values.map((e) => MapEntry(e.name, e.value))));
+  init() async {
+    await LocalConfigStorage.getInstance().init(Map.fromIterable(
+        AppConfig.values.map((e) => MapEntry(e.name, e.value))));
   }
 
   bool getBool(AppConfig appConfig) {
