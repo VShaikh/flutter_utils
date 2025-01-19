@@ -7,7 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  video_thumbnail: ^0.5.3
+  get_thumbnail_video: ^0.7.3
   fc_native_image_resize: ^0.14.2
   cupertino_icons: ^1.0.6
   fluttertoast: ^8.2.1

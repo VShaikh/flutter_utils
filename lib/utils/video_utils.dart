@@ -1,5 +1,6 @@
 import 'package:flutter_utils/main.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
+import 'package:get_thumbnail_video/index.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 
 Future<void> createThumbFromVideo(String videoPath, String thumbPath, int thumbWidth, int thumbHeight) async {
   addDebug("Creating thumbnail from video\n \t\t$videoPath \n \t\t $thumbPath");
