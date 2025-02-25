@@ -14,7 +14,7 @@ void toast(level, icon, message, {type = ToastificationType.success}) {
       type: type,
       style: ToastificationStyle.flatColored,
       autoCloseDuration: const Duration(seconds: 3),
-      alignment: Alignment.centerRight,
+      alignment: Alignment.bottomCenter,
       animationDuration: const Duration(milliseconds: 500),
       icon: Icon(icon),
       showIcon: true,
