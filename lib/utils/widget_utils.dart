@@ -9,7 +9,7 @@ void toast(level, icon, message, {type = ToastificationType.success}) {
   addDebug(message);
   // if (isAndroid() || kIsWeb) {
     toastification.show(
-      description: RichText(text: TextSpan(text: message)),
+      description: RichText(text: TextSpan(text: message, style: TextStyle(color: Colors.black87))),
       title: Text(level),
       type: type,
       style: ToastificationStyle.flatColored,
@@ -20,7 +20,8 @@ void toast(level, icon, message, {type = ToastificationType.success}) {
       showIcon: true,
       pauseOnHover: true,
       dragToClose: true,
-      applyBlurEffect: true,
+      backgroundColor: Colors.black38,
+      // applyBlurEffect: true,
     );
   // }
 }
