@@ -7,7 +7,7 @@ import 'package:toastification/toastification.dart';
 
 void toast(level, icon, message, {type = ToastificationType.success}) {
   addDebug(message);
-  if (isAndroid() || kIsWeb) {
+  // if (isAndroid() || kIsWeb) {
     toastification.show(
       description: RichText(text: TextSpan(text: message)),
       title: Text(level),
@@ -22,7 +22,7 @@ void toast(level, icon, message, {type = ToastificationType.success}) {
       dragToClose: true,
       applyBlurEffect: true,
     );
-  }
+  // }
 }
 
 void toastInfo(message) {
