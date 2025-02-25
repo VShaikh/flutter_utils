@@ -3,22 +3,38 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_utils/utils/log_utils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:toastification/toastification.dart';
 
-void toast(message,
-    {fontSize = 16.0, bgColor = Colors.blue, textColor = Colors.white}) {
+void toast(level, icon, message, {type = ToastificationType.success}) {
   addDebug(message);
   if (isAndroid() || kIsWeb) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 3,
-      backgroundColor: bgColor,
-      textColor: textColor,
-      fontSize: fontSize,
+    toastification.show(
+      description: RichText(text: TextSpan(text: message)),
+      title: Text(level),
+      type: type,
+      style: ToastificationStyle.flatColored,
+      autoCloseDuration: const Duration(seconds: 3),
+      alignment: Alignment.centerRight,
+      animationDuration: const Duration(milliseconds: 500),
+      icon: Icon(icon),
+      showIcon: true,
+      pauseOnHover: true,
+      dragToClose: true,
+      applyBlurEffect: true,
     );
   }
+}
+
+void toastInfo(message) {
+  toast('Information', Icons.info, message, type: ToastificationType.success);
+}
+
+void toastWarn(message) {
+  toast('Warning', Icons.warning, message, type: ToastificationType.warning);
+}
+
+void toastError(message) {
+  toast('Error', Icons.error, message, type: ToastificationType.error);
 }
 
 void configureFlutterErrorHandling() {
@@ -28,9 +44,7 @@ void configureFlutterErrorHandling() {
 
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.red.withOpacity(0.5),
-          title: const Text('An error occurred')),
+      appBar: AppBar(backgroundColor: Colors.red.withOpacity(0.5), title: const Text('An error occurred')),
       body: Center(child: Text(details.toString())),
     );
   };
