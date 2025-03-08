@@ -5,6 +5,7 @@ export 'package:cached_network_image/cached_network_image.dart';
 export 'constants.dart';
 export 'utils/config_utils.dart';
 export 'utils/data_utils.dart';
+export 'utils/device_utils.dart';
 export 'utils/file_utils.dart';
 export 'utils/http_utils.dart';
 export 'utils/image_utils.dart';
