@@ -22,7 +22,7 @@ Future<void> createThumbFromImage(
       quality: 100);
 }
 
-localNotFoundImage() => Image.asset('assets/images/notfound.jpg').image;
+localNotFoundImage() => Image.asset('assets/images/notfound.png').image;
 
 localNotFoundImageWidget() => Image.asset('assets/images/notfound.png');
 
