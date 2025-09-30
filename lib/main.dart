@@ -3,6 +3,7 @@ library flutter_utils;
 export 'package:cached_network_image/cached_network_image.dart';
 
 export 'constants.dart';
+export 'pages/common_page.dart';
 export 'utils/config_utils.dart';
 export 'utils/data_utils.dart';
 export 'utils/device_utils.dart';

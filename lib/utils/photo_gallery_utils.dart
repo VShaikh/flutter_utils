@@ -50,9 +50,7 @@ class _GalleryPhotoViewWrapperState<T extends ImageItem, R extends Widget> exten
     return Scaffold(
       body: Container(
         decoration: widget.backgroundDecoration,
-        constraints: BoxConstraints.expand(
-          height: MediaQuery.of(context).size.height,
-        ),
+        constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height),
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: <Widget>[
@@ -79,7 +77,7 @@ class _GalleryPhotoViewWrapperState<T extends ImageItem, R extends Widget> exten
                     ? Opacity(opacity: widget.captionOpacity, child: widget.captionBuilder(widget.galleryItems[_currentIndex]))
                     : IconButton.outlined(onPressed: () => setState(() => _showCaption = !_showCaption), icon: const Icon(Icons.info_rounded)),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -91,21 +89,21 @@ class _GalleryPhotoViewWrapperState<T extends ImageItem, R extends Widget> exten
     // item.resourceType == ResourceType.network ? NetworkImage(item.resource) : AssetImage(item.resource);
     return item.resourceType == ResourceType.network
         ? PhotoViewGalleryPageOptions(
-      // imageProvider: item.resourceType == ResourceType.asset ? AssetImage(item.resource) : NetworkImage(item.resource),
-      imageProvider: CachedNetworkImageProvider(item.filePath),
-      initialScale: PhotoViewComputedScale.contained,
-      // minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
-      // maxScale: PhotoViewComputedScale.covered * 4.1,
-      heroAttributes: PhotoViewHeroAttributes(tag: item.id),
-    )
+            // imageProvider: item.resourceType == ResourceType.asset ? AssetImage(item.resource) : NetworkImage(item.resource),
+            imageProvider: CachedNetworkImageProvider(item.filePath),
+            initialScale: PhotoViewComputedScale.contained,
+            // minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
+            // maxScale: PhotoViewComputedScale.covered * 4.1,
+            heroAttributes: PhotoViewHeroAttributes(tag: item.id),
+          )
         : PhotoViewGalleryPageOptions(
-      // imageProvider: item.resourceType == ResourceType.asset ? AssetImage(item.resource) : NetworkImage(item.resource),
-      imageProvider: AssetImage(item.filePath),
-      initialScale: PhotoViewComputedScale.contained,
-      // minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
-      // maxScale: PhotoViewComputedScale.covered * 4.1,
-      heroAttributes: PhotoViewHeroAttributes(tag: item.id),
-    );
+            // imageProvider: item.resourceType == ResourceType.asset ? AssetImage(item.resource) : NetworkImage(item.resource),
+            imageProvider: AssetImage(item.filePath),
+            initialScale: PhotoViewComputedScale.contained,
+            // minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
+            // maxScale: PhotoViewComputedScale.covered * 4.1,
+            heroAttributes: PhotoViewHeroAttributes(tag: item.id),
+          );
   }
 }
 
@@ -116,9 +114,5 @@ class ImageItem {
   final String filePath;
   final ResourceType resourceType;
 
-  ImageItem({
-    required this.id,
-    required this.filePath,
-    required this.resourceType,
-  });
+  ImageItem({required this.id, required this.filePath, required this.resourceType});
 }

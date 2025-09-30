@@ -4,4 +4,3 @@ String uRootFolderPath = "/storage/emulated/0/";
 bool uEnableLog = true;
 String? uLocalFolder;
 DefaultCacheManager? uCacheManager;
-

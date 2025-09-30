@@ -8,21 +8,26 @@ import 'package:toastification/toastification.dart';
 void toast(level, icon, message, {type = ToastificationType.success}) {
   addDebug(message);
   // if (isAndroid() || kIsWeb) {
-    toastification.show(
-      description: RichText(text: TextSpan(text: message, style: TextStyle(color: Colors.black87))),
-      title: Text(level),
-      type: type,
-      style: ToastificationStyle.flatColored,
-      autoCloseDuration: const Duration(seconds: 1),
-      alignment: Alignment.bottomCenter,
-      animationDuration: const Duration(milliseconds: 200),
-      icon: Icon(icon),
-      showIcon: true,
-      pauseOnHover: false,
-      dragToClose: true,
-      backgroundColor: Colors.black38,
-      // applyBlurEffect: true,
-    );
+  toastification.show(
+    description: RichText(
+      text: TextSpan(
+        text: message,
+        style: TextStyle(color: Colors.black87),
+      ),
+    ),
+    title: Text(level),
+    type: type,
+    style: ToastificationStyle.flatColored,
+    autoCloseDuration: const Duration(seconds: 1),
+    alignment: Alignment.bottomCenter,
+    animationDuration: const Duration(milliseconds: 200),
+    icon: Icon(icon),
+    showIcon: true,
+    pauseOnHover: false,
+    dragToClose: true,
+    backgroundColor: Colors.black38,
+    // applyBlurEffect: true,
+  );
   // }
 }
 

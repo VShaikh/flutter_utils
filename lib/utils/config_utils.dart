@@ -36,10 +36,7 @@ class LocalConfigStorage {
     await init(data);
   }
 
-  void _deleteDataFile() =>
-      isAndroid() && existsFile(_dataFilePath)
-          ? File(_dataFilePath).deleteSync()
-          : {};
+  void _deleteDataFile() => isAndroid() && existsFile(_dataFilePath) ? File(_dataFilePath).deleteSync() : {};
 
   Map<String, dynamic> _dataFromFile() {
     if (existsFile(_dataFilePath) && fileContent(_dataFilePath).isNotEmpty) {
@@ -55,10 +52,7 @@ class LocalConfigStorage {
     return map.isNotEmpty && map.containsKey(key);
   }
 
-  bool _existsIn(Map<String, dynamic> data, String key) =>
-      data.entries
-          .where((e) => e.key == key)
-          .isNotEmpty;
+  bool _existsIn(Map<String, dynamic> data, String key) => data.entries.where((e) => e.key == key).isNotEmpty;
 
   dynamic _get(String key) {
     var dataMap = _dataMap;
@@ -66,9 +60,7 @@ class LocalConfigStorage {
       dataMap = _dataFromFile();
     }
     if (_existsIn(dataMap, key)) {
-      return dataMap.entries
-          .firstWhere((e) => e.key == key)
-          .value;
+      return dataMap.entries.firstWhere((e) => e.key == key).value;
     } else {
       throw Exception("No value found for $key");
     }
@@ -93,8 +85,7 @@ class LocalConfigStorage {
   }
 
   void _persistData(Map<String, dynamic> data) {
-    saveContent(_dataFilePath,
-        jsonEncode(data.map((key, value) => MapEntry(key, value))));
+    saveContent(_dataFilePath, jsonEncode(data.map((key, value) => MapEntry(key, value))));
   }
 
   dynamic get(String key) => _get(key);
