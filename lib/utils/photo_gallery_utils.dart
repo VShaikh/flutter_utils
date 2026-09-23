@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
@@ -47,8 +47,8 @@ class _GalleryPhotoViewWrapperState<T extends ImageItem, R extends Widget> exten
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return CupertinoPageScaffold(
+      child: Container(
         decoration: widget.backgroundDecoration,
         constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height),
         child: Stack(
@@ -75,7 +75,11 @@ class _GalleryPhotoViewWrapperState<T extends ImageItem, R extends Widget> exten
                 duration: const Duration(milliseconds: 500),
                 child: _showCaption
                     ? Opacity(opacity: widget.captionOpacity, child: widget.captionBuilder(widget.galleryItems[_currentIndex]))
-                    : IconButton.outlined(onPressed: () => setState(() => _showCaption = !_showCaption), icon: const Icon(Icons.info_rounded)),
+                    : CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () => setState(() => _showCaption = !_showCaption),
+                        child: const Icon(CupertinoIcons.info_circle_fill),
+                      ),
               ),
             ),
           ],

@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_utils/utils/log_utils.dart';
 import 'package:toastification/toastification.dart';
 
@@ -12,7 +12,7 @@ void toast(level, icon, message, {type = ToastificationType.success}) {
     description: RichText(
       text: TextSpan(
         text: message,
-        style: TextStyle(color: Colors.black87),
+        style: const TextStyle(color: CupertinoColors.black),
       ),
     ),
     title: Text(level),
@@ -25,22 +25,22 @@ void toast(level, icon, message, {type = ToastificationType.success}) {
     showIcon: true,
     pauseOnHover: false,
     dragToClose: true,
-    backgroundColor: Colors.black38,
+    backgroundColor: CupertinoColors.black.withValues(alpha: 0.24),
     // applyBlurEffect: true,
   );
   // }
 }
 
 void toastInfo(message) {
-  toast('Information', Icons.info, message, type: ToastificationType.success);
+  toast('Information', CupertinoIcons.info, message, type: ToastificationType.success);
 }
 
 void toastWarn(message) {
-  toast('Warning', Icons.warning, message, type: ToastificationType.warning);
+  toast('Warning', CupertinoIcons.exclamationmark_triangle, message, type: ToastificationType.warning);
 }
 
 void toastError(message) {
-  toast('Error', Icons.error, message, type: ToastificationType.error);
+  toast('Error', CupertinoIcons.xmark_circle, message, type: ToastificationType.error);
 }
 
 void configureFlutterErrorHandling() {
@@ -49,9 +49,9 @@ void configureFlutterErrorHandling() {
   };
 
   ErrorWidget.builder = (FlutterErrorDetails details) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.red.withOpacity(0.5), title: const Text('An error occurred')),
-      body: Center(child: Text(details.toString())),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(middle: Text('An error occurred')),
+      child: Center(child: Text(details.toString())),
     );
   };
 }

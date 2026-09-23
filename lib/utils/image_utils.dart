@@ -1,5 +1,5 @@
 import 'package:fc_native_image_resize/fc_native_image_resize.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_utils/main.dart';
 
